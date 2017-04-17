@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final String BUNDLE_STRING_KEY = "jniStringKey";
@@ -56,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tv_stringFromJni.setText(getStringFromJNI());
+                String stringData = getStringFromJNI();
+                tv_stringFromJni.setText(stringData);
+                Toast.makeText(activityContext, stringData, Toast.LENGTH_SHORT).show();
             }
         };
     }
@@ -65,7 +68,9 @@ public class MainActivity extends AppCompatActivity {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tv_integerFromJni.setText("The Sum of 5 and 7 = "+getIntFromJNI(5,7));
+                int intData = getIntFromJNI(5,7);
+                tv_integerFromJni.setText("The Sum of 5 and 7 = "+ intData);
+                Toast.makeText(activityContext, ""+intData, Toast.LENGTH_SHORT).show();
             }
         };
     }
